@@ -13,7 +13,7 @@ The Air Quality Monitoring System (AQMS) is designed to measure and assess air q
 ## Installation
 1. Clone the repository
     ```
-    git clone https://github.com/your-username/aqms.git
+    git clone https://github.com/mrigankraj/aqms.git
     ```
 2. Navigate to the project directory
     ```

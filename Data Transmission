@@ -1,0 +1,17 @@
+import requests
+
+def send_data_to_server(data):
+    url = 'http://your-server-endpoint/api/data'
+    response = requests.post(url, json=data)
+    return response.status_code
+
+if __name__ == "__main__":
+    sample_data = {
+        "pm": 10,
+        "no2": 20,
+        "so2": 5,
+        "co": 0.5,
+        "o3": 30,
+        "vocs": 100
+    }
+    send_data_to_server(sample_data)

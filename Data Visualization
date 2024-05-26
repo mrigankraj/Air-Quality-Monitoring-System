@@ -1,0 +1,32 @@
+import React, { useState, useEffect } from 'react';
+import Plot from 'react-plotly.js';
+
+function Dashboard() {
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        fetch('http://your-server-endpoint/api/data')
+            .then(response => response.json())
+            .then(data => setData(data));
+    }, []);
+
+    return (
+        <div>
+            <h1>Air Quality Dashboard</h1>
+            <Plot
+                data={[
+                    {
+                        x: data.map(d => d.timestamp),
+                        y: data.map(d => d.pm),
+                        type: 'scatter',
+                        mode: 'lines+markers',
+                        marker: {color: 'red'},
+                    },
+                ]}
+                layout={{title: 'Particulate Matter (PM) Levels'}}
+            />
+        </div>
+    );
+}
+
+export default Dashboard;

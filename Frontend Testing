@@ -1,0 +1,9 @@
+import React from 'react';
+import { render } from '@testing-library/react';
+import Dashboard from './Dashboard';
+
+test('renders Air Quality Dashboard', () => {
+    const { getByText } = render(<Dashboard />);
+    const linkElement = getByText(/Air Quality Dashboard/i);
+    expect(linkElement).toBeInTheDocument();
+});

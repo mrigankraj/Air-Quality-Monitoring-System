@@ -1,0 +1,17 @@
+import smtplib
+from email.mime.text import MIMEText
+
+def send_alert_email(pollutant, level):
+    msg = MIMEText(f"Alert! The level of {pollutant} has reached {level} which is above the safe limit.")
+    msg['Subject'] = 'Air Quality Alert'
+    msg['From'] = 'your-email@example.com'
+    msg['To'] = 'recipient-email@example.com'
+
+    with smtplib.SMTP('smtp.example.com') as server:
+        server.login('your-email@example.com', 'password')
+        server.sendmail('your-email@example.com', 'recipient-email@example.com', msg.as_string())
+
+if __name__ == "__main__":
+    pm_level = 150  # Example threshold
+    if pm_level > 100:
+        send_alert_email('PM', pm_level)
